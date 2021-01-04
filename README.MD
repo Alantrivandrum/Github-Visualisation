@@ -8,3 +8,8 @@
 
 ##### To run the code you will have to use the command "python visualisation.py" and the command prompt will ask for a valid GitHub username and you just have to type it in and you should be able to see the visualisations appear in your browser
 
+![languages used](https://github.com/Alantrivandrum/Github-Visualisation/blob/main/Github%20Visualisation/barchart.PNG)
+
+![languages used](https://github.com/Alantrivandrum/Github-Visualisation/blob/main/Github%20Visualisation/piechart.PNG)
+
+![languages used](https://github.com/Alantrivandrum/Github-Visualisation/blob/main/Github%20Visualisation/stackedbarchart.PNG)
