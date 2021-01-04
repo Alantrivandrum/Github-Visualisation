@@ -21,10 +21,21 @@ from tkinter import messagebox
 
 
 username = input("Please input a valid GitHub username here: ")
-print("PLEASE WAIT WHILE THE PROGRAM LOADS - the running time is proportional to the repositories th entered user owns ")
 
-token = "00203889e055d2c50d5dabd9d62c6cdaeb082ceb"
-g = Github(token)
+try:
+    token = input("Please enter a valid OAuth Token: ")
+    g = Github(token)
+    user = g.get_user(username)
+    print("Your token is valid - Good Job")
+except:
+    print("Bad Credentials - will continue running program with no token but it will be ratelimited!")
+    g = Github()
+    user = g.get_user(username)
+    
+
+print("PLEASE WAIT WHILE THE PROGRAM LOADS - the running time is proportional to the repositories that the entered user owns ")
+
+
 
 
 
@@ -44,7 +55,7 @@ c_secret = text[1]
 
 # pygithub object
 
-user = g.get_user(username)
+
 #print(user.get_repos)
 
 
