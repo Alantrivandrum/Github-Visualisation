@@ -5,6 +5,9 @@ from github import Github
 from pprint import pprint
 import pygal 
 from pygal.style import LightColorizedStyle as LCS, LightenStyle as LS
+import tkinter
+from tkinter import messagebox
+
 
 # github username
 #username = "alantrivandrum"
@@ -18,6 +21,11 @@ from pygal.style import LightColorizedStyle as LCS, LightenStyle as LS
 
 
 username = input("Please input a valid GitHub username here: ")
+print("PLEASE WAIT WHILE THE PROGRAM LOADS - the running time is proportional to the repositories th entered user owns ")
+
+token = "00203889e055d2c50d5dabd9d62c6cdaeb082ceb"
+g = Github(token)
+
 
 
 
@@ -27,11 +35,15 @@ repos = {}
 languages = {}
 
 f = open("authorisation.txt", "r") 
-c_id = f.readline(1)
-c_secret = f.readline(2)
+text = f.readlines()
+c_id = text[0]
+c_secret = text[1]
+#print(c_id)
+#print(c_secret)
+
+
 # pygithub object
-g = Github(client_id=c_id, client_secret=c_secret)  
-# get that user by username
+
 user = g.get_user(username)
 #print(user.get_repos)
 
@@ -91,14 +103,19 @@ def addRepoLanguages(repo):
             languages[language] = languages[language] + 1
         else:
             languages[language] = 1
+
     
        
 
     
-
+stars = []
 
 count = 0
 for repo in user.get_repos():
+    if repo.stargazers_count == 0:
+        stars.append(0)
+    else: 
+        stars.append(repo.stargazers_count)
     addRepoToDict(repo)
     addRepoLanguages(repo)
 
@@ -108,6 +125,7 @@ names = []
 commits = []
 languageNames = []
 languageCount = []
+
 for value in repos:
     names.append(value)
     commits.append(repos[value])
@@ -135,7 +153,7 @@ my_config.height = 500
 
 
 if __name__ == '__main__':
-    chart = pygal.Bar(my_config,style = my_style)
+    chart = pygal.HorizontalBar(my_config,style = my_style)
     chart.title = f"{user.login}'s Github repositories and their corresponding commits"
     chart.x_labels = names
     chart.add("", commits)
@@ -157,4 +175,15 @@ if __name__ == '__main__':
     chart2.width = 1500
     chart2.render_in_browser()
     chart2.render_to_file("piechart.html")
+
+
+    chart3 = pygal.StackedBar()
+    chart3.title = f"Number of stars for each repository owned by {user.login}"
+    count = 0
+    for name in names:
+        chart3.add(name, stars[count])
+        count = count + 1
+    chart3.width = 1500
+    chart3.render_in_browser()
+    chart3.render_to_file("stackedbar.html")
 
