@@ -20,18 +20,17 @@ from pygal.style import LightColorizedStyle as LCS, LightenStyle as LS
 username = input("Please input a valid GitHub username here: ")
 
 
-f = open("token.txt", "r")
-token = f.read()
-
 
 
 #token = "80fd7422d2994e5262b2d93b435121616a8de47d"
 repos = {} 
 languages = {}
 
-
+f = open("authorisation.txt", "r") 
+c_id = f.readline(1)
+c_secret = f.readline(2)
 # pygithub object
-g = Github(token)
+g = Github(client_id=c_id, client_secret=c_secret)  
 # get that user by username
 user = g.get_user(username)
 #print(user.get_repos)
