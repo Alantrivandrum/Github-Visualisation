@@ -45,10 +45,10 @@ print("PLEASE WAIT WHILE THE PROGRAM LOADS - the running time is proportional to
 repos = {} 
 languages = {}
 
-f = open("authorisation.txt", "r") 
-text = f.readlines()
-c_id = text[0]
-c_secret = text[1]
+#f = open("authorisation.txt", "r") 
+#text = f.readlines()
+#c_id = text[0]
+#c_secret = text[1]
 #print(c_id)
 #print(c_secret)
 
