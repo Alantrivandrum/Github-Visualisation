@@ -169,7 +169,7 @@ if __name__ == '__main__':
     chart.x_labels = names
     chart.add("", commits)
     chart.render_in_browser()
-    chart.render_to_file("barchart.html")
+    chart.render_to_file("barchart.svg")
 
 
     #chart2 = pygal.CHARTS(my_config,style = my_style)
@@ -185,7 +185,7 @@ if __name__ == '__main__':
         count = count + 1
     chart2.width = 1500
     chart2.render_in_browser()
-    chart2.render_to_file("piechart.html")
+    chart2.render_to_file("piechart.svg")
 
 
     chart3 = pygal.StackedBar()
@@ -196,5 +196,5 @@ if __name__ == '__main__':
         count = count + 1
     chart3.width = 1500
     chart3.render_in_browser()
-    chart3.render_to_file("stackedbar.html")
+    chart3.render_to_file("stackedbar.svg")
 
