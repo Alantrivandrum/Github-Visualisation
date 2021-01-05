@@ -1,5 +1,5 @@
 ### Dependancies/Requirements to run code bundle:
-```Python 3, Pygal, Lxml, PyGithub```
+```Python, Pygal, Lxml, PyGithub```
 
 
 #### Instructions
